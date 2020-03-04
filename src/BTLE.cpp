@@ -7,3 +7,11 @@ BLEUnsignedCharCharacteristic batteryLevelChar("2A19",  // standard 16-bit chara
 BLERead | BLENotify);
 int oldBatteryLevel = 0;  // last battery level reading from analog input
 long previousMillis = 0;  // last time the battery level was checked, in ms
+
+void BTLEsetup(){
+    
+}
+
+void reportPosition(sPosition sPos){
+    
+}

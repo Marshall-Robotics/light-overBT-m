@@ -4,9 +4,10 @@
  *  in the rest of the program as flags and data. It also contains the 
  *  custom data structures and preset defaults. 
 **/
-#ifndef serial
-#define serial
+#ifndef BTLE
+#define BTLE
 
-extern void serialSetup();
+extern void BTLEsetup();
+extern void reportPosition(sPosition sPos);
 
 #endif

@@ -2,6 +2,15 @@
 #include <config.h>
 #include <data.h>
 
+void sensorSetup(){
+  pinMode(readerProfile[0].potPin, INPUT_PULLDOWN);
+  pinMode(readerProfile[1].potPin, INPUT_PULLDOWN);
+  pinMode(readerProfile[2].potPin, INPUT_PULLDOWN);
+  pinMode(readerProfile[3].potPin, INPUT_PULLDOWN);
+  pinMode(readerProfile[4].potPin, INPUT_PULLDOWN);
+  pinMode(readerProfile[5].potPin, INPUT_PULLDOWN);
+}
+
 String byteToStr(byte num){ //verified
     String sOut = String(num);
     while(true){

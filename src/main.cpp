@@ -1,16 +1,20 @@
 #include <Arduino.h>
 #include <light.h>
-
-
-
+#include <sensor.h>
+#include <BTLE.h>
+#include <serial.h>
 void setup() {
-setupRGB();
-analogReadResolution(8);
-pinMode(21, INPUT);
+    serialSetup();
+    sensorSetup();
+    RGBsetup();
+    BTLEsetup();
 }
 
 void loop() {
-    setRGB(analogRead(21),analogRead(20),analogRead(16));
+    sPosition sPos = readPotValPositions();
+    setRGBsPos(sPos);
+    reportPosition(sPos);
+    delay(100);
 }
 
 

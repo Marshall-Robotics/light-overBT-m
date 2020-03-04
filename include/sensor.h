@@ -7,6 +7,8 @@
 #ifndef sensor
 #define sensor
 
+extern void sensorSetup();
+
 extern byte readPotVal(potData &pData);
 
 extern byte readPrintPotVal(potData &pData);
