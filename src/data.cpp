@@ -2,12 +2,12 @@
 #include <data.h>
 
 potData readerProfile[6] {
-  {1, 20, 256, 50, 50}, //g "pinky"
-  {2, 20, 256, 50, 50},  //g "ring finger"
-  {3, 20, 256, 50, 50},  //g "middle finger"
-  {4, 20, 256, 50, 50},  //g "index"
-  {5, 20, 256, 50, 50},
-  {6, 20, 256, 50, 50}
+  {1, 10, 256, 50, 50}, //g "pinky"
+  {2, 10, 256, 50, 50},  //g "ring finger"
+  {3, 10, 256, 50, 50},  //g "middle finger"
+  {4, 10, 256, 50, 50},  //g "index"
+  {5, 10, 256, 50, 50},
+  {6, 10, 256, 50, 50}
 };
 
 servoData handProfile[6] {

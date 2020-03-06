@@ -6,17 +6,17 @@
 
 
 void setRGB(byte R, byte G, byte B) {
-    WiFiDrv::analogWrite(RED_PIN,R);
-    WiFiDrv::analogWrite(GREEN_PIN,G); 
-    WiFiDrv::analogWrite(BLUE_PIN,B);
+    analogWrite(RED_PIN_A,R);
+    analogWrite(GREEN_PIN_A,G); 
+    analogWrite(BLUE_PIN_A,B);
 }
 
 void setRGBsPos(sPosition sPos){
-    setRGB(sPos.indexF, sPos.pinkyF, sPos.ringF);
+    setRGB(255-sPos.indexF, 255-sPos.pinkyF, 255-sPos.ringF);
 }
+/*IMPORTANT: do not set the pins as output as that will fuck with the NINA
+BT LE module and make execution halt whenever you do anything related to BT LE
+*/
 
-void RGBsetup() {
-    WiFiDrv::pinMode(RED_PIN, OUTPUT);
-    WiFiDrv::pinMode(GREEN_PIN, OUTPUT);
-    WiFiDrv::pinMode(BLUE_PIN, OUTPUT);
-}
+
+
