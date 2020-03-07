@@ -6,6 +6,13 @@
 #ifndef data
 #define data
 
+#define HpinkyF 0
+#define HringF 1
+#define HmiddleF 2
+#define HindexF 3
+#define HthumbF 4
+#define Hwrist 5
+
 // finger Pin min max
 struct servoData {
   String fName;
