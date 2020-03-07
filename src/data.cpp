@@ -11,13 +11,14 @@ potData readerProfile[6] {
 };
 
 servoData handProfile[6] {
-  {"Pinky",         3,  100, 1000},
-  {"ring Finger",   5,  100, 1000},
-  {"middle Finger", 6,  -100, 900},
-  {"index",         10,100, 900},
-  {"thumb",         11,  0, 1100},
-  {"DISABLED",      9, 100, 900}
+  {"Pinky",         3,  0, 255},
+  {"ring Finger",   5,  0, 255},
+  {"middle Finger", 6,  0, 255},
+  {"index",         10, 0, 255},
+  {"thumb",         11, 0, 255},
+  {"wrist",         9,  0, 255}
 };
+
 
 sPosition NUMBERONE {100, 100,  100, 100, 100};
 sPosition PEACE     {100, 100, 0, 0, 100};

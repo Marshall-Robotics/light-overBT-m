@@ -4,37 +4,52 @@
 
 BLEService posRservice("180F");
 
-BLEUnsignedCharCharacteristic batteryLevelChar("EE01",  // standard 16-bit characteristic UUID
+BLEUnsignedCharCharacteristic sPosChar00("EE00",  // standard 16-bit characteristic UUID
+BLERead | BLENotify);
+BLEUnsignedCharCharacteristic sPosChar01("EE01",  // standard 16-bit characteristic UUID
+BLERead | BLENotify);
+BLEUnsignedCharCharacteristic sPosChar02("EE02",  // standard 16-bit characteristic UUID
+BLERead | BLENotify);
+BLEUnsignedCharCharacteristic sPosChar03("EE03",  // standard 16-bit characteristic UUID
+BLERead | BLENotify);
+BLEUnsignedCharCharacteristic sPosChar04("EE04",  // standard 16-bit characteristic UUID
+BLERead | BLENotify);
+BLEUnsignedCharCharacteristic sPosChar05("EE05",  // standard 16-bit characteristic UUID
 BLERead | BLENotify);
 
-int oldBatteryLevel = 0;  // last battery level reading from analog input
-long previousMillis = 0;  // last time the battery level was checked, in ms
 BLEDevice central;
 
 void BTLEsetup(){
-    setRGB(YELLOW);
+    serRGBA(YELLOW);
     delay(500);
-    setRGB(BLUE);
+    serRGBA(BLUE);
     delay(500);
-    setRGB(OFF);
+    serRGBA(OFF);
     if(!BLE.begin()){
         Serial.println("fail to start BT LE");
         while (1)
         {
-            setRGB(RED); //show error color code 
+            serRGBA(RED); //show error color code 
             delay(500);
-            setRGB(BLUE);
+            serRGBA(BLUE);
             delay(500);
-            setRGB(OFF);
+            serRGBA(OFF);
             delay(500);
 
         }
     }
-    BLE.setLocalName("BatteryMonitor");
+    BLE.setLocalName("glove-kinesis");
     BLE.setAdvertisedService(posRservice); // add the service UUID
-    posRservice.addCharacteristic(batteryLevelChar); // add the battery level characteristic
+
+    posRservice.addCharacteristic(sPosChar00); // add the battery level characteristic
+    posRservice.addCharacteristic(sPosChar01);
+    posRservice.addCharacteristic(sPosChar02);
+    posRservice.addCharacteristic(sPosChar03);
+    posRservice.addCharacteristic(sPosChar04);
+    posRservice.addCharacteristic(sPosChar05);
+
     BLE.addService(posRservice); // Add the battery service
-    batteryLevelChar.writeValue(oldBatteryLevel); // set initial value for this characteristic
+    sPosChar00.writeValue(50); // set initial value for this characteristic
 
     /* Start advertising BLE.  It will start continuously transmitting BLE
      advertising packets and will be visible to remote BLE central devices
@@ -43,11 +58,11 @@ void BTLEsetup(){
     // start advertising
     BLE.advertise();
 
-    setRGB(GREEN);
+    serRGBA(GREEN);
     delay(500);
-    setRGB(BLUE);
+    serRGBA(BLUE);
     delay(500);
-    setRGB(OFF);
+    serRGBA(OFF);
     Serial.println("Bluetooth device active, waiting for connections...");
 }
 
@@ -67,19 +82,13 @@ void reportPosition(sPosition sPos){
     if(!central.connected()){
         connectBTLE();
     }
-    int battery = sPos.indexF;
-    int batteryLevel = battery;
-
-    if (batteryLevel != oldBatteryLevel) {      // if the battery level has changed
-    Serial.print("Battery Level % is now: "); // print it
-    Serial.println(batteryLevel);
-    batteryLevelChar.writeValue(batteryLevel);  // and update the battery level characteristic
-    oldBatteryLevel = batteryLevel;           // save the level for next comparison
-    }
-
-
-
-
-
+    
+    sPosChar00.writeValue(sPos.pinkyF);
+    sPosChar01.writeValue(sPos.ringF);
+    sPosChar02.writeValue(sPos.middleF);
+    sPosChar03.writeValue(sPos.indexF);  // and update the battery level characteristic
+    sPosChar04.writeValue(sPos.thumbF);
+    sPosChar05.writeValue(sPos.wrist);
+    
 }
     

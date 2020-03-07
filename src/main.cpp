@@ -5,16 +5,18 @@
 #include <serial.h>
 #include <config.h>
 void setup() {
+    analogReadResolution(8);
+    
     pinMode(LED_BUILTIN,OUTPUT);
     serialSetup();
     sensorSetup();
     BTLEsetup();
 
-    setRGB(WHITE);
+    serRGBA(WHITE);
     delay(500);
-    setRGB(GREEN);
+    serRGBA(GREEN);
     delay(5000);
-    setRGB(OFF);
+    serRGBA(OFF);
     delay(500);
 }
 

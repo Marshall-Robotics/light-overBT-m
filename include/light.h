@@ -13,8 +13,9 @@
 #define OFF 0, 0, 0
 #define GREEN 0, 110, 0
 #define YELLOW 110, 110, 0
-
-extern void setRGB(byte r, byte g, byte b);
+#define CALIBLED 255
+extern void serRGBA(byte r, byte g, byte b);
+extern void serRGBB(byte r, byte g, byte b);
 extern void setRGBsPos(sPosition sPos);
 
 #endif

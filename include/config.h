@@ -5,17 +5,17 @@
 #ifndef config
 #define config
 
-#define GREEN_PIN_A 0 
+#define RED_PIN_A 3
 
-#define RED_PIN_A 1
+#define GREEN_PIN_A 4
 
-#define BLUE_PIN_A 2
+#define BLUE_PIN_A 5
 
-#define GREEN_PIN_B 3 
+#define RED_PIN_B 2
 
-#define RED_PIN_B 4
+#define GREEN_PIN_B 1
 
-#define BLUE_PIN_B 5
+#define BLUE_PIN_B 0 
 /*
     Mode 1: serial control
     Mode 2: read sensor and move (deploy mode)
